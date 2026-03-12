@@ -5,97 +5,21 @@
       "developerName": "cart",
       "category": "Engagement",
       "externalDataTranFields": [
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "interactionName",
-          "developerName": "interactionName",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "pageView",
-          "developerName": "pageView",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "personalizationContentId",
-          "developerName": "personalizationContentId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "personalizationId",
-          "developerName": "personalizationId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sourceChannel",
-          "developerName": "sourceChannel",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceLocale",
-          "developerName": "sourceLocale",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourcePageType",
-          "developerName": "sourcePageType",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrl",
-          "developerName": "sourceUrl",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrlReferrer",
-          "developerName": "sourceUrlReferrer",
-          "dataType": "Text",
-          "isDataRequired": false
-        }
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "interactionName", "developerName": "interactionName", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "pageView", "developerName": "pageView", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "personalizationContentId", "developerName": "personalizationContentId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "personalizationId", "developerName": "personalizationId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sourceChannel", "developerName": "sourceChannel", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceLocale", "developerName": "sourceLocale", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourcePageType", "developerName": "sourcePageType", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrl", "developerName": "sourceUrl", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrlReferrer", "developerName": "sourceUrlReferrer", "dataType": "Text", "isDataRequired": false}
       ]
     },
     {
@@ -103,91 +27,20 @@
       "developerName": "cartItem",
       "category": "Engagement",
       "externalDataTranFields": [
-        {
-          "masterLabel": "cartEventId",
-          "developerName": "cartEventId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "catalogObjectId",
-          "developerName": "catalogObjectId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "catalogObjectType",
-          "developerName": "catalogObjectType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "currency",
-          "developerName": "currency",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "personalizationContentId",
-          "developerName": "personalizationContentId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "personalizationId",
-          "developerName": "personalizationId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "price",
-          "developerName": "price",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "quantity",
-          "developerName": "quantity",
-          "dataType": "Number",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        }
+        {"masterLabel": "cartEventId", "developerName": "cartEventId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "catalogObjectId", "developerName": "catalogObjectId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "catalogObjectType", "developerName": "catalogObjectType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "currency", "developerName": "currency", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "personalizationContentId", "developerName": "personalizationContentId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "personalizationId", "developerName": "personalizationId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "price", "developerName": "price", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "quantity", "developerName": "quantity", "dataType": "Number", "isDataRequired": true},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true}
       ]
     },
     {
@@ -195,109 +48,23 @@
       "developerName": "catalog",
       "category": "Engagement",
       "externalDataTranFields": [
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "id",
-          "developerName": "id",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "interactionName",
-          "developerName": "interactionName",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "pageView",
-          "developerName": "pageView",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "personalizationContentId",
-          "developerName": "personalizationContentId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "personalizationId",
-          "developerName": "personalizationId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sourceChannel",
-          "developerName": "sourceChannel",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceLocale",
-          "developerName": "sourceLocale",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourcePageType",
-          "developerName": "sourcePageType",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrl",
-          "developerName": "sourceUrl",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrlReferrer",
-          "developerName": "sourceUrlReferrer",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "type",
-          "developerName": "type",
-          "dataType": "Text",
-          "isDataRequired": true
-        }
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "id", "developerName": "id", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "interactionName", "developerName": "interactionName", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "pageView", "developerName": "pageView", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "personalizationContentId", "developerName": "personalizationContentId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "personalizationId", "developerName": "personalizationId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sourceChannel", "developerName": "sourceChannel", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceLocale", "developerName": "sourceLocale", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourcePageType", "developerName": "sourcePageType", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrl", "developerName": "sourceUrl", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrlReferrer", "developerName": "sourceUrlReferrer", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "type", "developerName": "type", "dataType": "Text", "isDataRequired": true}
       ]
     },
     {
@@ -305,61 +72,15 @@
       "developerName": "consentLog",
       "category": "Engagement",
       "externalDataTranFields": [
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "provider",
-          "developerName": "provider",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "purpose",
-          "developerName": "purpose",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "status",
-          "developerName": "status",
-          "dataType": "Text",
-          "isDataRequired": true
-        }
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "provider", "developerName": "provider", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "purpose", "developerName": "purpose", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "status", "developerName": "status", "dataType": "Text", "isDataRequired": true}
       ]
     },
     {
@@ -367,115 +88,24 @@
       "developerName": "order",
       "category": "Engagement",
       "externalDataTranFields": [
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "interactionName",
-          "developerName": "interactionName",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "orderCurrency",
-          "developerName": "orderCurrency",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "orderId",
-          "developerName": "orderId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "orderTotalValue",
-          "developerName": "orderTotalValue",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "pageView",
-          "developerName": "pageView",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "personalizationContentId",
-          "developerName": "personalizationContentId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "personalizationId",
-          "developerName": "personalizationId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sourceChannel",
-          "developerName": "sourceChannel",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceLocale",
-          "developerName": "sourceLocale",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourcePageType",
-          "developerName": "sourcePageType",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrl",
-          "developerName": "sourceUrl",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrlReferrer",
-          "developerName": "sourceUrlReferrer",
-          "dataType": "Text",
-          "isDataRequired": false
-        }
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "interactionName", "developerName": "interactionName", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "orderCurrency", "developerName": "orderCurrency", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "orderId", "developerName": "orderId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "orderTotalValue", "developerName": "orderTotalValue", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "pageView", "developerName": "pageView", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "personalizationContentId", "developerName": "personalizationContentId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "personalizationId", "developerName": "personalizationId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sourceChannel", "developerName": "sourceChannel", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceLocale", "developerName": "sourceLocale", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourcePageType", "developerName": "sourcePageType", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrl", "developerName": "sourceUrl", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrlReferrer", "developerName": "sourceUrlReferrer", "dataType": "Text", "isDataRequired": false}
       ]
     },
     {
@@ -483,91 +113,20 @@
       "developerName": "orderItem",
       "category": "Engagement",
       "externalDataTranFields": [
-        {
-          "masterLabel": "catalogObjectId",
-          "developerName": "catalogObjectId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "catalogObjectType",
-          "developerName": "catalogObjectType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "currency",
-          "developerName": "currency",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "orderEventId",
-          "developerName": "orderEventId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "personalizationContentId",
-          "developerName": "personalizationContentId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "personalizationId",
-          "developerName": "personalizationId",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "price",
-          "developerName": "price",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "quantity",
-          "developerName": "quantity",
-          "dataType": "Number",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        }
+        {"masterLabel": "catalogObjectId", "developerName": "catalogObjectId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "catalogObjectType", "developerName": "catalogObjectType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "currency", "developerName": "currency", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "orderEventId", "developerName": "orderEventId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "personalizationContentId", "developerName": "personalizationContentId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "personalizationId", "developerName": "personalizationId", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "price", "developerName": "price", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "quantity", "developerName": "quantity", "dataType": "Number", "isDataRequired": true},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true}
       ]
     },
     {
@@ -575,127 +134,26 @@
       "developerName": "contactPointAddress",
       "category": "Profile",
       "externalDataTranFields": [
-        {
-          "masterLabel": "addressLine1",
-          "developerName": "addressLine1",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "addressLine2",
-          "developerName": "addressLine2",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "addressLine3",
-          "developerName": "addressLine3",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "addressLine4",
-          "developerName": "addressLine4",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "city",
-          "developerName": "city",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "country",
-          "developerName": "country",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "pageView",
-          "developerName": "pageView",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "postalCode",
-          "developerName": "postalCode",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sourceChannel",
-          "developerName": "sourceChannel",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceLocale",
-          "developerName": "sourceLocale",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourcePageType",
-          "developerName": "sourcePageType",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrl",
-          "developerName": "sourceUrl",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrlReferrer",
-          "developerName": "sourceUrlReferrer",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "stateProvince",
-          "developerName": "stateProvince",
-          "dataType": "Text",
-          "isDataRequired": true
-        }
+        {"masterLabel": "addressLine1", "developerName": "addressLine1", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "addressLine2", "developerName": "addressLine2", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "addressLine3", "developerName": "addressLine3", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "addressLine4", "developerName": "addressLine4", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "city", "developerName": "city", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "country", "developerName": "country", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "pageView", "developerName": "pageView", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "postalCode", "developerName": "postalCode", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sourceChannel", "developerName": "sourceChannel", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceLocale", "developerName": "sourceLocale", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourcePageType", "developerName": "sourcePageType", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrl", "developerName": "sourceUrl", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrlReferrer", "developerName": "sourceUrlReferrer", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "stateProvince", "developerName": "stateProvince", "dataType": "Text", "isDataRequired": true}
       ]
     },
     {
@@ -703,85 +161,19 @@
       "developerName": "contactPointEmail",
       "category": "Profile",
       "externalDataTranFields": [
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "email",
-          "developerName": "email",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "pageView",
-          "developerName": "pageView",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sourceChannel",
-          "developerName": "sourceChannel",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceLocale",
-          "developerName": "sourceLocale",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourcePageType",
-          "developerName": "sourcePageType",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrl",
-          "developerName": "sourceUrl",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrlReferrer",
-          "developerName": "sourceUrlReferrer",
-          "dataType": "Text",
-          "isDataRequired": false
-        }
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "email", "developerName": "email", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "pageView", "developerName": "pageView", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sourceChannel", "developerName": "sourceChannel", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceLocale", "developerName": "sourceLocale", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourcePageType", "developerName": "sourcePageType", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrl", "developerName": "sourceUrl", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrlReferrer", "developerName": "sourceUrlReferrer", "dataType": "Text", "isDataRequired": false}
       ]
     },
     {
@@ -789,85 +181,19 @@
       "developerName": "contactPointPhone",
       "category": "Profile",
       "externalDataTranFields": [
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "pageView",
-          "developerName": "pageView",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "phoneNumber",
-          "developerName": "phoneNumber",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sourceChannel",
-          "developerName": "sourceChannel",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceLocale",
-          "developerName": "sourceLocale",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourcePageType",
-          "developerName": "sourcePageType",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrl",
-          "developerName": "sourceUrl",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrlReferrer",
-          "developerName": "sourceUrlReferrer",
-          "dataType": "Text",
-          "isDataRequired": false
-        }
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "pageView", "developerName": "pageView", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "phoneNumber", "developerName": "phoneNumber", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sourceChannel", "developerName": "sourceChannel", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceLocale", "developerName": "sourceLocale", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourcePageType", "developerName": "sourcePageType", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrl", "developerName": "sourceUrl", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrlReferrer", "developerName": "sourceUrlReferrer", "dataType": "Text", "isDataRequired": false}
       ]
     },
     {
@@ -875,157 +201,31 @@
       "developerName": "identity",
       "category": "Profile",
       "externalDataTranFields": [
-        {
-          "masterLabel": "addressLine1",
-          "developerName": "addressLine1",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "addressLine2",
-          "developerName": "addressLine2",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "addressLine3",
-          "developerName": "addressLine3",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "addressLine4",
-          "developerName": "addressLine4",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "city",
-          "developerName": "city",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "country",
-          "developerName": "country",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "email",
-          "developerName": "email",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "firstName",
-          "developerName": "firstName",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "isAnonymous",
-          "developerName": "isAnonymous",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "lastName",
-          "developerName": "lastName",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "pageView",
-          "developerName": "pageView",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "phoneNumber",
-          "developerName": "phoneNumber",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "postalCode",
-          "developerName": "postalCode",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sourceChannel",
-          "developerName": "sourceChannel",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceLocale",
-          "developerName": "sourceLocale",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourcePageType",
-          "developerName": "sourcePageType",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrl",
-          "developerName": "sourceUrl",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrlReferrer",
-          "developerName": "sourceUrlReferrer",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "stateProvince",
-          "developerName": "stateProvince",
-          "dataType": "Text",
-          "isDataRequired": false
-        }
+        {"masterLabel": "addressLine1", "developerName": "addressLine1", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "addressLine2", "developerName": "addressLine2", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "addressLine3", "developerName": "addressLine3", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "addressLine4", "developerName": "addressLine4", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "city", "developerName": "city", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "country", "developerName": "country", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "email", "developerName": "email", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "firstName", "developerName": "firstName", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "isAnonymous", "developerName": "isAnonymous", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "lastName", "developerName": "lastName", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "pageView", "developerName": "pageView", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "phoneNumber", "developerName": "phoneNumber", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "postalCode", "developerName": "postalCode", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sourceChannel", "developerName": "sourceChannel", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceLocale", "developerName": "sourceLocale", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourcePageType", "developerName": "sourcePageType", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrl", "developerName": "sourceUrl", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrlReferrer", "developerName": "sourceUrlReferrer", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "stateProvince", "developerName": "stateProvince", "dataType": "Text", "isDataRequired": false}
       ]
     },
     {
@@ -1033,97 +233,21 @@
       "developerName": "partyIdentification",
       "category": "Profile",
       "externalDataTranFields": [
-        {
-          "masterLabel": "category",
-          "developerName": "category",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "dateTime",
-          "developerName": "dateTime",
-          "dataType": "DateTime",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "deviceId",
-          "developerName": "deviceId",
-          "dataType": "Text",
-          "isDataRequired": true,
-          "primaryIndexOrder": 1
-        },
-        {
-          "masterLabel": "eventId",
-          "developerName": "eventId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "eventType",
-          "developerName": "eventType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "IDName",
-          "developerName": "IDName",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "IDType",
-          "developerName": "IDType",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "pageView",
-          "developerName": "pageView",
-          "dataType": "Number",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sessionId",
-          "developerName": "sessionId",
-          "dataType": "Text",
-          "isDataRequired": true
-        },
-        {
-          "masterLabel": "sourceChannel",
-          "developerName": "sourceChannel",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceLocale",
-          "developerName": "sourceLocale",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourcePageType",
-          "developerName": "sourcePageType",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrl",
-          "developerName": "sourceUrl",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "sourceUrlReferrer",
-          "developerName": "sourceUrlReferrer",
-          "dataType": "Text",
-          "isDataRequired": false
-        },
-        {
-          "masterLabel": "userId",
-          "developerName": "userId",
-          "dataType": "Text",
-          "isDataRequired": true
-        }
+        {"masterLabel": "category", "developerName": "category", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "dateTime", "developerName": "dateTime", "dataType": "DateTime", "isDataRequired": true},
+        {"masterLabel": "deviceId", "developerName": "deviceId", "dataType": "Text", "isDataRequired": true, "primaryIndexOrder": 1},
+        {"masterLabel": "eventId", "developerName": "eventId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "eventType", "developerName": "eventType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "IDName", "developerName": "IDName", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "IDType", "developerName": "IDType", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "pageView", "developerName": "pageView", "dataType": "Number", "isDataRequired": false},
+        {"masterLabel": "sessionId", "developerName": "sessionId", "dataType": "Text", "isDataRequired": true},
+        {"masterLabel": "sourceChannel", "developerName": "sourceChannel", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceLocale", "developerName": "sourceLocale", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourcePageType", "developerName": "sourcePageType", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrl", "developerName": "sourceUrl", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "sourceUrlReferrer", "developerName": "sourceUrlReferrer", "dataType": "Text", "isDataRequired": false},
+        {"masterLabel": "userId", "developerName": "userId", "dataType": "Text", "isDataRequired": true}
       ]
     },
     {

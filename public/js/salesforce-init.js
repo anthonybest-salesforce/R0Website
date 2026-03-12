@@ -109,92 +109,21 @@
         };
       }
 
-      var sitemapConfig = {
-        global: {
-          onActionEvent: function(actionEvent) {
-            var name = (actionEvent && actionEvent.interaction && actionEvent.interaction.name) || 'userEngagement';
-            dispatchSalesforceEvent('pageView', { interaction: name });
-            return actionEvent;
-          }
-        },
-        pageTypeDefault: {
-          name: 'default',
-          interaction: { name: 'default', eventType: 'userEngagement' }
-        },
-        pageTypes: [
-          {
-            name: 'home',
-            isMatch: function() {
-              var p = window.location.pathname;
-              return p === '/' || p === '/index.html' || p.endsWith('/index.html');
-            },
-            interaction: { name: 'home view', eventType: 'userEngagement' },
-            contentZones: [
-              { name: 'hero_banner', selector: '.hero-content' },
-              { name: 'product_recommendations', selector: '.section-dark .recommendations-grid' },
-              { name: 'content_recommendations', selector: '.section-alt .recommendations-grid' }
-            ]
-          },
-          {
-            name: 'signin',
-            isMatch: function() { return window.location.pathname.includes('signin'); },
-            interaction: { name: 'signin view', eventType: 'userEngagement' }
-          },
-          {
-            name: 'account',
-            isMatch: function() { return window.location.pathname.includes('account'); },
-            interaction: { name: 'account view', eventType: 'userEngagement' },
-            contentZones: [
-              { name: 'order_recommendations', selector: '.account-section' }
-            ]
-          },
-          {
-            name: 'shop',
-            isMatch: function() { return window.location.pathname.includes('shop'); },
-            interaction: { name: 'shop view', eventType: 'userEngagement' },
-            contentZones: [{ name: 'shop_grid', selector: '#shopGrid' }]
-          },
-          {
-            name: 'product',
-            isMatch: function() { return window.location.pathname.includes('product'); },
-            interaction: { name: 'product view', eventType: 'userEngagement' },
-            contentZones: [{ name: 'product_detail', selector: '.product-detail' }]
-          },
-          {
-            name: 'learn',
-            isMatch: function() { return window.location.pathname.includes('learn'); },
-            interaction: { name: 'learn view', eventType: 'userEngagement' },
-            contentZones: [
-              { name: 'learn_articles', selector: '.learn-articles' },
-              { name: 'learn_recommended', selector: '.learn-recommended-grid' }
-            ]
-          },
-          {
-            name: 'connect',
-            isMatch: function() { return window.location.pathname.includes('connect'); },
-            interaction: { name: 'connect view', eventType: 'userEngagement' }
-          },
-          {
-            name: 'checkout',
-            isMatch: function() { return window.location.pathname.includes('checkout'); },
-            interaction: { name: 'checkout view', eventType: 'userEngagement' }
-          },
-          {
-            name: 'order-confirmation',
-            isMatch: function() { return window.location.pathname.includes('order-confirmation'); },
-            interaction: { name: 'order confirmation view', eventType: 'userEngagement' }
-          },
-          {
-            name: 'signup',
-            isMatch: function() { return window.location.pathname.includes('signup'); },
-            interaction: { name: 'signup view', eventType: 'userEngagement' }
-          },
-          {
-            name: 'admin',
-            isMatch: function() { return window.location.pathname.includes('admin'); },
-            interaction: { name: 'admin view', eventType: 'userEngagement' }
-          }
-        ]
+      var rawConfig = (typeof window.orgGrayRockSitemapConfig !== 'undefined')
+        ? window.orgGrayRockSitemapConfig
+        : null;
+      if (!rawConfig) {
+        console.warn('[Gray Rock] salesforce-sitemap.js must load before salesforce-init.js');
+      }
+      var sitemapConfig = rawConfig && typeof window.orgGrayRockToRuntimeSitemap === 'function'
+        ? window.orgGrayRockToRuntimeSitemap(rawConfig)
+        : { pageTypeDefault: { name: 'default', interaction: { name: 'default', eventType: 'userEngagement' } }, pageTypes: [] };
+      sitemapConfig.global = {
+        onActionEvent: function(actionEvent) {
+          var name = (actionEvent && actionEvent.interaction && actionEvent.interaction.name) || 'userEngagement';
+          dispatchSalesforceEvent('pageView', { interaction: name });
+          return actionEvent;
+        }
       };
       logAction('initSitemap', 'pageTypes: home, shop, product, learn, connect, signin, signup, account, checkout, order-confirmation, admin');
       SI.initSitemap(sitemapConfig);

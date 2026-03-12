@@ -100,7 +100,7 @@ Create a data stream to receive events from the website connector.
 #### 6. Create and Upload Sitemap
 
 1. **XML Sitemap** (for Web Content connector): Available at `/sitemap.xml`. Set `SITE_URL` env var to your production domain (e.g. `https://grayrock-80ac05c6df7e.herokuapp.com`).
-2. **Salesforce Personalization Sitemap** (for Websites & Mobile Apps): Use `public/salesforce-sitemap.js` or `public/salesforce-sitemap.json`. The upload tool accepts a .js file or copy/paste. Upload via Data Cloud Setup → Configuration → Websites & Mobile Apps → your website → Sitemap → Upload.
+2. **Salesforce Personalization Sitemap** (for Websites & Mobile Apps): Use `public/salesforce-sitemap.js` (single file with sitemap + all interaction events). The upload tool accepts a .js file or copy/paste. Upload via Data Cloud Setup → Configuration → Websites & Mobile Apps → your website → Sitemap → Upload.
 
 #### 7. Share with Developer
 

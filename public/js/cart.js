@@ -27,7 +27,10 @@
     var SI = window.SalesforceInteractions;
     if (!SI || typeof SI.sendEvent !== 'function') return;
     try {
-      var name = SI.CartInteractionName ? SI.CartInteractionName.AddToCart : 'Add To Cart';
+      var names = (typeof window.orgGrayRockInteractionNames !== 'undefined' && window.orgGrayRockInteractionNames.cart)
+        ? window.orgGrayRockInteractionNames.cart
+        : null;
+      var name = (names && names.AddToCart) || (SI.CartInteractionName ? SI.CartInteractionName.AddToCart : 'Add To Cart');
       SI.sendEvent({
         interaction: {
           name: name,
@@ -49,7 +52,10 @@
     var SI = window.SalesforceInteractions;
     if (!SI || typeof SI.sendEvent !== 'function') return;
     try {
-      var name = SI.CartInteractionName ? SI.CartInteractionName.ReplaceCart : 'Replace Cart';
+      var names = (typeof window.orgGrayRockInteractionNames !== 'undefined' && window.orgGrayRockInteractionNames.cart)
+        ? window.orgGrayRockInteractionNames.cart
+        : null;
+      var name = (names && names.ReplaceCart) || (SI.CartInteractionName ? SI.CartInteractionName.ReplaceCart : 'Replace Cart');
       var lineItems = (items || []).map(function(i) {
         return {
           catalogObjectType: 'Product',

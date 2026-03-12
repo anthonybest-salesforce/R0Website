@@ -140,7 +140,10 @@
     var SI = window.SalesforceInteractions;
     if (SI && typeof SI.sendEvent === 'function') {
       try {
-        var purchaseName = SI.OrderInteractionName ? SI.OrderInteractionName.Purchase : 'Purchase';
+        var names = (typeof window.orgGrayRockInteractionNames !== 'undefined' && window.orgGrayRockInteractionNames.order)
+          ? window.orgGrayRockInteractionNames.order
+          : null;
+        var purchaseName = (names && names.Purchase) || (SI.OrderInteractionName ? SI.OrderInteractionName.Purchase : 'Purchase');
         SI.sendEvent({
           interaction: {
             name: purchaseName,

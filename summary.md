@@ -42,7 +42,7 @@ Gray Rock/
 │   │   └── logo.svg       # Legacy SVG (deprecated; use logo.png)
 │   ├── web-connector-schema.json   # Data Cloud event schema
 │   ├── salesforce-sitemap.js       # Personalization sitemap
-│   └── salesforce-sitemap.json
+│   └── salesforce-sitemap.js (sitemap + all interaction events)
 └── docs/
     └── SALESFORCE-INTEGRATION.md   # Detailed Salesforce setup guide
 ```
@@ -371,7 +371,7 @@ git push heroku main
 - [ ] Map connector object fields
 - [ ] Create website data stream
 - [ ] Upload `public/web-connector-schema.json` (or add signIn, createAccount, webToLead if using standard schema)
-- [ ] Upload `public/salesforce-sitemap.js` or `public/salesforce-sitemap.json` to connector
+- [ ] Upload `public/salesforce-sitemap.js` to connector (sitemap + interaction catalog)
 - [ ] Note CDN URL from connector
 
 ### 5. Branding (optional)

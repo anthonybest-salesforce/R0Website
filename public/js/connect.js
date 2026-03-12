@@ -3,7 +3,9 @@
  * Submits lead data to Salesforce Data Cloud SDX as a custom event.
  */
 (function() {
-  var CUSTOM_EVENT_TYPE = 'webToLead';
+  var CUSTOM_EVENT_TYPE = (typeof window.orgGrayRockInteractionNames !== 'undefined' && window.orgGrayRockInteractionNames.lead)
+    ? window.orgGrayRockInteractionNames.lead
+    : 'webToLead';
 
   function init() {
     var form = document.getElementById('connectForm');
