@@ -168,7 +168,7 @@ function sendAddToCart(productId, productName, price, qty) {
       interaction: {
         name: name,
         lineItem: {
-          catalogObjectType: 'Product',
+          catalogObjectType: 'Add To Cart',
           catalogObjectId: productId,
           quantity: qty,
           price: parseFloat(price) || 0,
@@ -189,7 +189,7 @@ function sendReplaceCart(items) {
     var name = (names && names.ReplaceCart) || (SI.CartInteractionName ? SI.CartInteractionName.ReplaceCart : 'Replace Cart');
     var lineItems = (items || []).map(function(i) {
       return {
-        catalogObjectType: 'Product',
+        catalogObjectType: 'Remove From Cart',
         catalogObjectId: i.id,
         quantity: i.qty || 1,
         price: parseFloat(i.price) || 0,
