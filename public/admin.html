@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Gray Rock</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <style>
+    .admin-page { padding: 6rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
+    .admin-gate { max-width: 360px; margin: 0 auto; }
+    .admin-gate h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .admin-gate .form-group { margin-bottom: 1rem; }
+    .admin-gate label { display: block; margin-bottom: 0.5rem; font-size: 0.875rem; }
+    .admin-gate input { width: 100%; padding: 0.75rem; border: 1px solid var(--slds-border); border-radius: 4px; background: var(--slds-neutral-10); color: white; }
+    .admin-panel { background: var(--slds-brand-contrast); border-radius: 8px; padding: 2rem; border: 1px solid var(--slds-border); margin-bottom: 2rem; }
+    .admin-panel h2 { font-size: 1.25rem; margin-bottom: 1rem; }
+    .admin-actions { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .admin-table { width: 100%; border-collapse: collapse; }
+    .admin-table th, .admin-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--slds-border); }
+    .admin-table th { color: rgba(255,255,255,0.7); font-weight: 600; font-size: 0.8rem; }
+    .admin-table td { font-size: 0.9rem; }
+    .admin-table .btn-delete { padding: 0.35rem 0.75rem; font-size: 0.8rem; background: var(--slds-error); border-color: var(--slds-error); }
+    .admin-table .btn-delete:hover { background: #c00; border-color: #c00; }
+    .admin-table .btn-view { padding: 0.35rem 0.75rem; font-size: 0.8rem; margin-right: 0.5rem; }
+    .admin-empty { color: rgba(255,255,255,0.6); font-style: italic; padding: 1rem 0; }
+    .btn-danger { background: var(--slds-error); border-color: var(--slds-error); }
+    .btn-danger:hover { background: #c00; border-color: #c00; }
+    .admin-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .admin-modal { background: var(--slds-brand-contrast); border-radius: 8px; max-width: 600px; width: 100%; max-height: 80vh; overflow: hidden; border: 1px solid var(--slds-border); }
+    .admin-modal-header { padding: 1.25rem; border-bottom: 1px solid var(--slds-border); display: flex; justify-content: space-between; align-items: center; }
+    .admin-modal-header h3 { margin: 0; font-size: 1.1rem; }
+    .admin-modal-close { background: none; border: none; color: rgba(255,255,255,0.8); font-size: 1.5rem; cursor: pointer; padding: 0 0.5rem; }
+    .admin-modal-body { padding: 1.25rem; overflow-y: auto; max-height: 60vh; }
+    .admin-order { padding: 1rem; margin-bottom: 1rem; background: var(--slds-neutral-10); border-radius: 6px; }
+    .admin-order:last-child { margin-bottom: 0; }
+    .admin-order-meta { font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
+    .admin-order-items { font-size: 0.9rem; margin-top: 0.5rem; }
+    .admin-order-item { padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .admin-order-item:last-child { border-bottom: none; }
+    .admin-order-total { font-weight: 600; margin-top: 0.5rem; }
+    .admin-modal-empty { color: rgba(255,255,255,0.6); font-style: italic; }
+  </style>
+</head>
+<body>
+  <header class="header header-scrolled">
+    <div class="header-left">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="Gray Rock">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="connect.html">Connect</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-ctas">
+      <a href="index.html" class="btn btn-outline">Back to Home</a>
+    </div>
+  </header>
+
+  <main class="admin-page">
+    <div id="adminGate" class="admin-gate signin-card">
+      <h1>Admin Access</h1>
+      <p class="signin-subtitle">Enter the admin password to continue.</p>
+      <form id="adminAuthForm">
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" name="password" required autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Enter</button>
+      </form>
+    </div>
+
+    <div id="adminPanel" class="hidden">
+      <div class="admin-panel">
+        <h2>Users</h2>
+        <div class="admin-actions">
+          <button type="button" class="btn btn-primary" id="refreshUsers">Refresh</button>
+          <button type="button" class="btn btn-danger" id="clearAllBtn">Empty Users & Purchase History</button>
+        </div>
+        <div id="usersContainer">
+          <table class="admin-table" id="usersTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="usersBody"></tbody>
+          </table>
+          <p id="usersEmpty" class="admin-empty hidden">No users yet.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="ordersModal" class="admin-modal-overlay hidden" aria-hidden="true">
+      <div class="admin-modal">
+        <div class="admin-modal-header">
+          <h3 id="ordersModalTitle">Purchase History</h3>
+          <button type="button" class="admin-modal-close" id="ordersModalClose" aria-label="Close">&times;</button>
+        </div>
+        <div class="admin-modal-body" id="ordersModalBody">
+          <p class="admin-modal-empty">Loading…</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Gray Rock. All rights reserved. <a href="index.html">Home</a></p>
+  </footer>
+
+  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/salesforce-init.js"></script>
+  <script>
+    const gate = document.getElementById('adminGate');
+    const panel = document.getElementById('adminPanel');
+    const authForm = document.getElementById('adminAuthForm');
+    const usersBody = document.getElementById('usersBody');
+    const usersEmpty = document.getElementById('usersEmpty');
+    const usersTable = document.getElementById('usersTable');
+
+    authForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const password = document.getElementById('adminPassword').value;
+      try {
+        const res = await fetch('/api/admin/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password }),
+          credentials: 'include'
+        });
+        const text = await res.text();
+        let data = {};
+        try { data = text ? JSON.parse(text) : {}; } catch (_) {}
+        if (data.ok) {
+          gate.classList.add('hidden');
+          panel.classList.remove('hidden');
+          loadUsers();
+        } else {
+          alert(data.error || 'Invalid password');
+        }
+      } catch (err) {
+        alert('Failed to authenticate. ' + (err.message || ''));
+      }
+    });
+
+    async function loadUsers() {
+      try {
+        const res = await fetch('/api/admin/users', { credentials: 'include' });
+        const data = await res.json();
+        if (!res.ok) {
+          if (res.status === 401) {
+            gate.classList.remove('hidden');
+            panel.classList.add('hidden');
+            return;
+          }
+          throw new Error(data.error || 'Failed to load users');
+        }
+        renderUsers(data.users || []);
+      } catch (err) {
+        alert(err.message || 'Failed to load users');
+      }
+    }
+
+    function renderUsers(users) {
+      usersBody.innerHTML = '';
+      if (users.length === 0) {
+        usersTable.classList.add('hidden');
+        usersEmpty.classList.remove('hidden');
+        return;
+      }
+      usersTable.classList.remove('hidden');
+      usersEmpty.classList.add('hidden');
+      for (const u of users) {
+        const tr = document.createElement('tr');
+        const created = u.created_at ? new Date(u.created_at).toLocaleDateString() : '-';
+        const name = [u.first_name, u.last_name].filter(Boolean).join(' ').trim() || u.name || '-';
+        tr.innerHTML = `
+          <td>${u.id}</td>
+          <td>${escapeHtml(u.email)}</td>
+          <td>${escapeHtml(name)}</td>
+          <td>${created}</td>
+          <td>
+            <button type="button" class="btn btn-view">View Orders</button>
+            <button type="button" class="btn btn-delete">Delete</button>
+          </td>
+        `;
+        tr.querySelector('.btn-view').addEventListener('click', () => viewUserOrders(u.id, u.email, name));
+        tr.querySelector('.btn-delete').addEventListener('click', () => deleteUser(u.id));
+        usersBody.appendChild(tr);
+      }
+    }
+
+    function escapeHtml(s) {
+      if (!s) return '';
+      const div = document.createElement('div');
+      div.textContent = s;
+      return div.innerHTML;
+    }
+
+    async function viewUserOrders(userId, email, name) {
+      const modal = document.getElementById('ordersModal');
+      const titleEl = document.getElementById('ordersModalTitle');
+      const bodyEl = document.getElementById('ordersModalBody');
+      titleEl.textContent = 'Purchase History – ' + (name || email || 'User #' + userId);
+      bodyEl.innerHTML = '<p class="admin-modal-empty">Loading…</p>';
+      modal.classList.remove('hidden');
+      modal.setAttribute('aria-hidden', 'false');
+
+      try {
+        const res = await fetch('/api/admin/users/' + userId + '/orders', { credentials: 'include' });
+        const data = await res.json();
+        if (!res.ok) {
+          bodyEl.innerHTML = '<p class="admin-modal-empty">' + (data.error || 'Failed to load orders') + '</p>';
+          return;
+        }
+        const orders = data.orders || [];
+        if (orders.length === 0) {
+          bodyEl.innerHTML = '<p class="admin-modal-empty">No orders yet.</p>';
+          return;
+        }
+        bodyEl.innerHTML = orders.map(function(o) {
+          const date = o.created_at ? new Date(o.created_at).toLocaleString() : '-';
+          const itemsHtml = (o.items || []).map(function(i) {
+            const qty = i.qty || 1;
+            const price = parseFloat(i.price || 0);
+            return '<div class="admin-order-item">' + escapeHtml(i.product_name || 'Item') + ' × ' + qty + ' — $' + (price * qty).toFixed(2) + '</div>';
+          }).join('');
+          return '<div class="admin-order">' +
+            '<div class="admin-order-meta">Order #' + o.id + ' · ' + date + '</div>' +
+            '<div class="admin-order-items">' + itemsHtml + '</div>' +
+            '<div class="admin-order-total">Total: $' + (parseFloat(o.total) || 0).toFixed(2) + '</div>' +
+          '</div>';
+        }).join('');
+      } catch (err) {
+        bodyEl.innerHTML = '<p class="admin-modal-empty">Failed to load orders.</p>';
+      }
+    }
+
+    document.getElementById('ordersModalClose').addEventListener('click', function() {
+      document.getElementById('ordersModal').classList.add('hidden');
+      document.getElementById('ordersModal').setAttribute('aria-hidden', 'true');
+    });
+    document.getElementById('ordersModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.add('hidden');
+        this.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    async function deleteUser(id) {
+      if (!confirm('Delete this user and their order history?')) return;
+      try {
+        const res = await fetch(`/api/admin/users/${id}`, { method: 'DELETE', credentials: 'include' });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          loadUsers();
+        } else {
+          alert(data.error || 'Failed to delete user');
+        }
+      } catch (err) {
+        alert('Failed to delete user');
+      }
+    }
+
+    document.getElementById('refreshUsers').addEventListener('click', loadUsers);
+
+    document.getElementById('clearAllBtn').addEventListener('click', async function() {
+      if (!confirm('This will permanently delete ALL users and ALL purchase history. Continue?')) return;
+      try {
+        const res = await fetch('/api/admin/clear-all', { method: 'POST', credentials: 'include' });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          loadUsers();
+          alert('All users and purchase history have been cleared.');
+        } else {
+          alert(data.error || 'Failed to clear data');
+        }
+      } catch (err) {
+        alert('Failed to clear data');
+      }
+    });
+  </script>
+</body>
+</html>

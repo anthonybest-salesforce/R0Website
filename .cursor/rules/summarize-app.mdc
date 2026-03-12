@@ -1,0 +1,40 @@
+---
+description: When user says "summarize this app", create summary.md for Salesforce Marketing Cloud SE
+alwaysApply: true
+---
+
+# Summarize This App
+
+When the user says **"summarize this app"** (or similar: "summarize the app", "create a summary of this app"), create a `summary.md` file at the project root that includes everything a **Salesforce Marketing Cloud Solutions Engineer (SE)** would need to clone the app.
+
+## Required Sections in summary.md
+
+1. **App Overview** – Name, purpose, tech stack (Node.js, Express, MySQL, etc.)
+
+2. **Architecture** – Server structure, public assets, database layer, API routes
+
+3. **Pages & Routes** – All HTML pages, URL paths, and what each page does
+
+4. **Database Schema** – Tables (users, orders, order_items, products, content), columns, relationships, seed data
+
+5. **API Endpoints** – Auth, orders, products, content, admin; request/response shapes
+
+6. **Salesforce Integration**
+   - Salesforce Personalization & Data 360 (Interactions SDK)
+   - CDN script URL and tenant config
+   - Consent flow (consent.js, localStorage, orgGrayRockConsentReady)
+   - Sitemap config (page types, content zones, interactions)
+   - Custom events: signIn, createAccount, webToLead, userEngagement
+   - Identity tracking (setIdentity, sendEvent)
+   - Web Connector schema (public/web-connector-schema.json)
+   - Key files: salesforce-init.js, consent.js, connect.js, account.js, auth.js
+
+7. **Environment Variables** – SITE_URL, SESSION_SECRET, JAWSDB_URL/CLEARDB_DATABASE_URL, ADMIN_PASSWORD, Salesforce vars (SALESFORCE_SDK_CDN_URL, SALESFORCE_DATASPACE, etc.)
+
+8. **Deployment** – Heroku, Procfile, build/start commands, database add-on (JawsDB/ClearDB)
+
+9. **File Inventory** – Key files and their roles (server.js, db/*, public/*.html, public/js/*.js, public/css/*.css)
+
+10. **Cloning Checklist** – Step-by-step instructions for an SE to replicate: clone repo, install deps, configure env, provision DB, Data Cloud setup (connector, schema, sitemap), deploy
+
+Base the content on actual code in the project. Reference `docs/SALESFORCE-INTEGRATION.md` for Salesforce-specific details. Keep the summary comprehensive but scannable (use headings, tables, code blocks where helpful).

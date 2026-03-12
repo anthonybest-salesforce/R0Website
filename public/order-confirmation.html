@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - Gray Rock</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header header-scrolled">
+    <div class="header-left">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="Gray Rock">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="connect.html">Connect</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-ctas">
+      <button type="button" class="btn btn-console" id="consoleBtn" aria-label="Open event console">Console</button>
+      <a href="signin.html" class="btn btn-outline" id="authBtn">Sign In</a>
+      <a href="account.html" class="btn btn-outline">Account</a>
+    </div>
+  </header>
+
+  <main class="confirmation-page">
+    <section class="section">
+      <div id="confirmationContent" class="confirmation-content">
+        <h1 class="confirmation-title">Thank you for your order!</h1>
+        <p class="confirmation-subtitle">Your order has been received. No payment was processed — this is a demo.</p>
+        <div id="confirmationOrder" class="confirmation-order"></div>
+        <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+      </div>
+      <div id="confirmationEmpty" class="confirmation-empty" style="display:none">
+        <h2>No order found</h2>
+        <p>Your session may have expired. <a href="shop.html">Continue Shopping</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Gray Rock. All rights reserved. <a href="#" id="cookiePreferences">Cookie preferences</a> · <a href="admin.html">Admin Page</a></p>
+  </footer>
+
+  <div class="event-console" id="eventConsole" aria-hidden="true">
+    <div class="event-console-header">
+      <h3>Salesforce Events</h3>
+      <div class="event-console-actions">
+        <button type="button" class="event-console-toggle" id="consoleToggle" aria-label="Move console left or right"></button>
+        <button type="button" class="event-console-close" id="consoleClose" aria-label="Close console">&times;</button>
+      </div>
+    </div>
+    <div class="event-console-output" id="eventOutput"></div>
+    <button type="button" class="btn btn-console btn-console-clear" id="consoleClear">Clear</button>
+  </div>
+
+  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/salesforce-init.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/order-confirmation.js"></script>
+  <script>
+    var pref = document.getElementById('cookiePreferences');
+    if (pref) pref.addEventListener('click', function(e) { e.preventDefault(); window.orgGrayRockShowConsentPopup && window.orgGrayRockShowConsentPopup(); });
+  </script>
+</body>
+</html>

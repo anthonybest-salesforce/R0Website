@@ -1,0 +1,21 @@
+/**
+ * Salesforce Personalization & Data 360 SDK Configuration
+ *
+ * RENAME THIS FILE to salesforce-sdk.config.js and fill in your values.
+ * Add salesforce-sdk.config.js to .gitignore to avoid committing credentials.
+ *
+ * Required from your Salesforce Admin:
+ * - CDN_URL: Script URL for the Salesforce Interactions SDK
+ * - DATASET_ID: Your dataset ID from Data Cloud / Personalization setup
+ */
+
+window.SalesforceSDKConfig = {
+  // CDN URL - provided by Data Cloud Admin after Web Connector setup
+  CDN_URL: 'https://your-sdk-cdn-url.salesforce.com/...',
+
+  // Dataset ID - from your Personalization or Data Cloud configuration
+  DATASET_ID: 'your-dataset-id',
+
+  // Enable/disable SDK (for local dev without credentials)
+  enabled: true
+};

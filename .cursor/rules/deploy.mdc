@@ -1,0 +1,21 @@
+---
+description: When user says "deploy", commit to Git, push to GitHub, and deploy to Heroku
+alwaysApply: true
+---
+
+# Deploy Workflow
+
+When the user says **"deploy"** (or similar like "deploy it", "deploy to production"), perform these steps in order:
+
+1. **Commit to Git**
+   - Stage all changes: `git add -A`
+   - Commit with message: `git commit -m "Deploy"` (or use a descriptive message if the user provided one)
+   - If there are no changes to commit, skip the commit and proceed to step 2
+
+2. **Push to GitHub**
+   - Run: `git push origin main` (or `git push origin master` if that is the project's main branch)
+
+3. **Deploy to Heroku**
+   - Run: `git push heroku main` (or `git push heroku master` if that is the project's main branch)
+
+Do not ask for confirmation unless the user has uncommitted changes that might need review. Execute all steps automatically.

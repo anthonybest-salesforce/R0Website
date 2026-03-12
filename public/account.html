@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - Gray Rock</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header header-scrolled">
+    <div class="header-left">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="Gray Rock">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="connect.html">Connect</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-ctas">
+      <button type="button" class="btn btn-console" id="consoleBtn" aria-label="Open event console">Console</button>
+      <a href="#" class="btn btn-outline" id="authBtn">Log Out</a>
+    </div>
+  </header>
+
+  <main class="account-page">
+    <div class="account-header">
+      <h1>My Account</h1>
+      <p class="account-email">rmorris@sfse.dev</p>
+    </div>
+
+    <div class="account-layout">
+      <!-- Account Management -->
+      <section class="account-section">
+        <h2>Account Management</h2>
+        <div class="account-management-grid">
+          <div class="management-card">
+            <h3>Profile</h3>
+            <p>Update your name, email, and preferences</p>
+            <a href="#" class="btn btn-outline btn-sm">Edit Profile</a>
+          </div>
+          <div class="management-card">
+            <h3>Password</h3>
+            <p>Change your password</p>
+            <a href="#" class="btn btn-outline btn-sm">Change Password</a>
+          </div>
+          <div class="management-card">
+            <h3>Payment Methods</h3>
+            <p>Manage billing and payment info</p>
+            <a href="#" class="btn btn-outline btn-sm">Manage</a>
+          </div>
+          <div class="management-card">
+            <h3>Notifications</h3>
+            <p>Email and push notification settings</p>
+            <a href="#" class="btn btn-outline btn-sm">Settings</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Order History -->
+      <section class="account-section">
+        <h2>Order History</h2>
+        <div class="order-list">
+          <a href="product.html?id=river-pebbles" class="order-card">
+            <div class="order-image product-image product-image-river-pebbles"></div>
+            <div class="order-details">
+              <span class="order-number">Order #RZ-2847-9012</span>
+              <span class="order-product">River Pebbles Collection</span>
+              <span class="order-date">March 2, 2025</span>
+              <span class="order-status">Delivered</span>
+            </div>
+          </a>
+          <a href="product.html?id=amethyst-geode" class="order-card">
+            <div class="order-image product-image product-image-amethyst-geode"></div>
+            <div class="order-details">
+              <span class="order-number">Order #RZ-2847-9013</span>
+              <span class="order-product">Amethyst Geode</span>
+              <span class="order-date">February 28, 2025</span>
+              <span class="order-status">Delivered</span>
+            </div>
+          </a>
+          <a href="product.html?id=meteorite-fragment" class="order-card">
+            <div class="order-image product-image product-image-meteorite-fragment"></div>
+            <div class="order-details">
+              <span class="order-number">Order #RZ-2847-9014</span>
+              <span class="order-product">Authentic Meteorite Fragment</span>
+              <span class="order-date">February 15, 2025</span>
+              <span class="order-status">Delivered</span>
+            </div>
+          </a>
+          <a href="product.html?id=lunar-soil-sample" class="order-card">
+            <div class="order-image product-image product-image-lunar-soil-sample"></div>
+            <div class="order-details">
+              <span class="order-number">Order #RZ-2847-9015</span>
+              <span class="order-product">Lunar Soil Sample</span>
+              <span class="order-date">February 3, 2025</span>
+              <span class="order-status">Delivered</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Gray Rock. All rights reserved. <a href="#" id="cookiePreferences">Cookie preferences</a> · <a href="admin.html">Admin Page</a></p>
+  </footer>
+
+  <!-- Event Console Panel -->
+  <div class="event-console" id="eventConsole" aria-hidden="true">
+    <div class="event-console-header">
+      <h3>Salesforce Events</h3>
+      <div class="event-console-actions">
+        <button type="button" class="event-console-toggle" id="consoleToggle" aria-label="Move console left or right"></button>
+        <button type="button" class="event-console-close" id="consoleClose" aria-label="Close console">&times;</button>
+      </div>
+    </div>
+    <div class="event-console-output" id="eventOutput"></div>
+    <button type="button" class="btn btn-console btn-console-clear" id="consoleClear">Clear</button>
+  </div>
+
+  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/salesforce-init.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/account.js"></script>
+  <script>
+    var pref = document.getElementById('cookiePreferences');
+    if (pref) pref.addEventListener('click', function(e) { e.preventDefault(); window.orgGrayRockShowConsentPopup && window.orgGrayRockShowConsentPopup(); });
+  </script>
+</body>
+</html>

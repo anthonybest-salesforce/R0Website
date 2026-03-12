@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Gray Rock</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header header-scrolled">
+    <div class="header-left">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="Gray Rock">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="connect.html">Connect</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-ctas">
+      <button type="button" class="btn btn-console" id="consoleBtn" aria-label="Open event console">Console</button>
+      <a href="signin.html" class="btn btn-outline" id="authBtn">Sign In</a>
+      <a href="index.html" class="btn btn-outline">Back to Home</a>
+    </div>
+  </header>
+
+  <main class="signin-page">
+    <div class="signin-card">
+      <!-- Sign In View -->
+      <div id="signinView">
+        <h1>Sign In</h1>
+        <p class="signin-subtitle">Welcome back to Gray Rock</p>
+        <form class="signin-form" id="signinForm" autocomplete="off">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="off">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Log In</button>
+        </form>
+        <p class="signin-footer">
+          Don't have an account? <button type="button" class="btn-link" id="showCreateAccount">Create account</button>
+        </p>
+      </div>
+
+      <!-- Create Account View (hidden by default) -->
+      <div id="createAccountView" class="hidden">
+        <h1>Create Account</h1>
+        <p class="signin-subtitle">Join Gray Rock to track your orders</p>
+        <form class="signin-form" id="createAccountForm" autocomplete="off">
+          <div class="form-group">
+            <label for="createEmail">Email Address</label>
+            <input type="email" id="createEmail" name="email" required autocomplete="off">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" required autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" required autocomplete="off">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="optional">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="createPassword">Password</label>
+            <input type="password" id="createPassword" name="password" required minlength="6" autocomplete="new-password">
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6" autocomplete="new-password">
+          </div>
+          <div class="form-group marketing-opt-in-section">
+            <h3 class="marketing-opt-in-title">Marketing opt-in</h3>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optInEmail" name="optInEmail" value="1">
+              <span>Email</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optInSms" name="optInSms" value="1">
+              <span>SMS</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+        </form>
+        <p class="signin-footer">
+          Already have an account? <button type="button" class="btn-link" id="showSignIn">Sign in</button>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Gray Rock. All rights reserved. <a href="#" id="cookiePreferences">Cookie preferences</a> · <a href="admin.html">Admin Page</a></p>
+  </footer>
+
+  <!-- Event Console Panel -->
+  <div class="event-console" id="eventConsole" aria-hidden="true">
+    <div class="event-console-header">
+      <h3>Salesforce Events</h3>
+      <div class="event-console-actions">
+        <button type="button" class="event-console-toggle" id="consoleToggle" aria-label="Move console left or right"></button>
+        <button type="button" class="event-console-close" id="consoleClose" aria-label="Close console">&times;</button>
+      </div>
+    </div>
+    <div class="event-console-output" id="eventOutput"></div>
+    <button type="button" class="btn btn-console btn-console-clear" id="consoleClear">Clear</button>
+  </div>
+
+  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/salesforce-init.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    // Toggle between Sign In and Create Account views
+    function showCreateAccount() {
+      document.getElementById('signinView').classList.add('hidden');
+      document.getElementById('createAccountView').classList.remove('hidden');
+    }
+    function showSignIn() {
+      document.getElementById('createAccountView').classList.add('hidden');
+      document.getElementById('signinView').classList.remove('hidden');
+    }
+    document.getElementById('showCreateAccount').addEventListener('click', showCreateAccount);
+    document.getElementById('showSignIn').addEventListener('click', showSignIn);
+    if (new URLSearchParams(window.location.search).get('mode') === 'create') {
+      showCreateAccount();
+    }
+
+    function dispatchToConsole(type, name, payload) {
+      document.dispatchEvent(new CustomEvent('orgGrayRockSalesforceEvent', {
+        detail: { type: type, detail: { interaction: name, payload: payload } }
+      }));
+    }
+
+    function sendSignInToDataCloud(email) {
+      var payload = {
+        interaction: { name: 'signIn', eventType: 'signIn' },
+        user: {
+          identities: { email: email },
+          attributes: { emailAddress: email }
+        }
+      };
+      dispatchToConsole('sendEvent', 'signIn', payload);
+      var SI = window.SalesforceInteractions;
+      if (SI && typeof SI.sendEvent === 'function') {
+        try {
+          SI.setIdentity({ identifiers: [{ type: 'email', value: email }] });
+          SI.sendEvent(payload);
+        } catch (err) { console.warn('[Gray Rock] signIn sendEvent failed:', err); }
+      }
+    }
+
+    function sendCreateAccountToDataCloud(payload) {
+      var eventPayload = {
+        interaction: {
+          name: 'createAccount',
+          eventType: 'createAccount',
+          leadSource: 'Gray Rock Website'
+        },
+        user: {
+          identities: { email: payload.email },
+          attributes: {
+            firstName: payload.firstName,
+            lastName: payload.lastName,
+            emailAddress: payload.email,
+            phone: payload.phone || undefined,
+            optInEmail: payload.optInEmail === true,
+            optInSms: payload.optInSms === true
+          }
+        }
+      };
+      dispatchToConsole('sendEvent', 'createAccount', eventPayload);
+      var SI = window.SalesforceInteractions;
+      if (SI && typeof SI.sendEvent === 'function') {
+        try {
+          SI.setIdentity({ identifiers: [{ type: 'email', value: payload.email }] });
+          SI.sendEvent(eventPayload);
+        } catch (err) { console.warn('[Gray Rock] createAccount sendEvent failed:', err); }
+      }
+    }
+
+    document.getElementById('signinForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          sendSignInToDataCloud(email);
+          setTimeout(function() {
+            var params = new URLSearchParams(window.location.search);
+            window.location.href = params.get('redirect') || 'account.html';
+          }, 400);
+        } else {
+          alert(data.error || 'Login failed');
+        }
+      } catch (err) {
+        alert('Login failed. Database may not be configured.');
+      }
+    });
+
+    document.getElementById('createAccountForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const password = document.getElementById('createPassword').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
+      const payload = {
+        email: document.getElementById('createEmail').value,
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        phone: document.getElementById('phone').value.trim() || undefined,
+        password: password,
+        optInEmail: document.getElementById('optInEmail').checked,
+        optInSms: document.getElementById('optInSms').checked
+      };
+      try {
+        const res = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const text = await res.text();
+        let data;
+        try {
+          data = text ? JSON.parse(text) : {};
+        } catch (_) {
+          throw new Error(res.status === 503 ? 'Database is starting up. Please try again in a moment.' : 'Server error. Please try again.');
+        }
+        if (data.ok) {
+          sendCreateAccountToDataCloud(payload);
+          setTimeout(function() {
+            window.location.href = 'account.html';
+          }, 400);
+        } else {
+          alert(data.error || 'Registration failed');
+        }
+      } catch (err) {
+        alert(err.message || 'Registration failed. Please try again.');
+      }
+    });
+
+    var pref = document.getElementById('cookiePreferences');
+    if (pref) pref.addEventListener('click', function(e) { e.preventDefault(); window.orgGrayRockShowConsentPopup && window.orgGrayRockShowConsentPopup(); });
+  </script>
+</body>
+</html>

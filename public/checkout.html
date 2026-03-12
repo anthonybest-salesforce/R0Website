@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Gray Rock</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header header-scrolled">
+    <div class="header-left">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="Gray Rock">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="connect.html">Connect</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-ctas">
+      <button type="button" class="btn btn-console" id="consoleBtn" aria-label="Open event console">Console</button>
+      <a href="signin.html" class="btn btn-outline" id="authBtn">Sign In</a>
+      <a href="account.html" class="btn btn-outline">Account</a>
+    </div>
+  </header>
+
+  <main class="checkout-page">
+    <section class="section">
+      <h1 class="checkout-title">Checkout</h1>
+      <a href="shop.html" class="checkout-back">← Back to Shop</a>
+
+      <div id="checkoutEmpty" class="checkout-empty" style="display:none">
+        <p>Your cart is empty.</p>
+        <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+      </div>
+
+      <div id="checkoutContent" class="checkout-content">
+        <div class="checkout-layout">
+          <div class="checkout-main">
+            <div class="checkout-section">
+              <h2>Payment Method</h2>
+              <div class="payment-methods">
+                <label class="payment-method">
+                  <input type="radio" name="paymentMethod" value="credit" checked>
+                  <span class="payment-method-label">Credit / Debit Card</span>
+                </label>
+                <label class="payment-method">
+                  <input type="radio" name="paymentMethod" value="applepay">
+                  <span class="payment-method-label">Apple Pay</span>
+                </label>
+                <label class="payment-method">
+                  <input type="radio" name="paymentMethod" value="googlepay">
+                  <span class="payment-method-label">Google Pay</span>
+                </label>
+                <label class="payment-method">
+                  <input type="radio" name="paymentMethod" value="amazonpay">
+                  <span class="payment-method-label">Amazon Pay</span>
+                </label>
+              </div>
+            </div>
+
+            <div id="creditCardForm" class="checkout-section payment-form">
+              <h3>Card Details</h3>
+              <div class="checkout-form">
+                <div class="form-group">
+                  <label for="cardNumber">Card Number</label>
+                  <div class="masked-input-wrap">
+                    <input type="text" id="cardNumber" class="masked-input" placeholder="#### #### #### ####" maxlength="19" data-mask autocomplete="off">
+                  </div>
+                </div>
+                <div class="checkout-form-row">
+                  <div class="form-group">
+                    <label for="cardExpiry">Expiry (MM/YY)</label>
+                    <div class="masked-input-wrap">
+                      <input type="text" id="cardExpiry" class="masked-input" placeholder="MM/YY" maxlength="5" data-mask autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="cardCvv">CVV</label>
+                    <div class="masked-input-wrap">
+                      <input type="text" id="cardCvv" class="masked-input" placeholder="###" maxlength="4" data-mask autocomplete="off">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cardName">Name on Card</label>
+                  <div class="masked-input-wrap">
+                    <input type="text" id="cardName" class="masked-input" placeholder="Full name" data-mask autocomplete="off">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="walletForm" class="checkout-section payment-form" style="display:none">
+              <h3 id="walletFormTitle">Wallet Payment</h3>
+              <p class="wallet-desc">Sign in with your account to complete payment.</p>
+              <div class="checkout-form">
+                <div class="form-group">
+                  <label for="walletEmail">Email</label>
+                  <div class="masked-input-wrap">
+                    <input type="email" id="walletEmail" class="masked-input" placeholder="email@example.com" data-mask autocomplete="off">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="walletPassword">Password</label>
+                  <div class="masked-input-wrap">
+                    <input type="text" id="walletPassword" class="masked-input" placeholder="••••••••" data-mask autocomplete="off">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-sidebar">
+            <div class="checkout-order-summary">
+              <h3>Order Summary</h3>
+              <div id="checkoutItems" class="checkout-items"></div>
+              <div class="checkout-total-row">
+                <span>Total</span>
+                <strong id="checkoutTotal">$0.00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-actions">
+          <button type="button" id="placeOrderBtn" class="btn btn-primary btn-lg">Place Order</button>
+        </div>
+      </div>
+
+      <div id="checkoutSuccess" class="checkout-success" style="display:none">
+        <h2>Thank you for your order!</h2>
+        <p>Your order has been received. No payment was processed — this is a demo.</p>
+        <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Gray Rock. All rights reserved. <a href="#" id="cookiePreferences">Cookie preferences</a> · <a href="admin.html">Admin Page</a></p>
+  </footer>
+
+  <div class="event-console" id="eventConsole" aria-hidden="true">
+    <div class="event-console-header">
+      <h3>Salesforce Events</h3>
+      <div class="event-console-actions">
+        <button type="button" class="event-console-toggle" id="consoleToggle" aria-label="Move console left or right"></button>
+        <button type="button" class="event-console-close" id="consoleClose" aria-label="Close console">&times;</button>
+      </div>
+    </div>
+    <div class="event-console-output" id="eventOutput"></div>
+    <button type="button" class="btn btn-console btn-console-clear" id="consoleClear">Clear</button>
+  </div>
+
+  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/salesforce-init.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script>
+    var pref = document.getElementById('cookiePreferences');
+    if (pref) pref.addEventListener('click', function(e) { e.preventDefault(); window.orgGrayRockShowConsentPopup && window.orgGrayRockShowConsentPopup(); });
+  </script>
+</body>
+</html>

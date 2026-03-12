@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product - Gray Rock</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header header-scrolled">
+    <div class="header-left">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="Gray Rock">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="learn.html">Learn</a></li>
+          <li><a href="connect.html">Connect</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-ctas">
+      <button type="button" class="btn btn-console" id="consoleBtn" aria-label="Open event console">Console</button>
+      <a href="signin.html" class="btn btn-outline" id="authBtn">Sign In</a>
+      <a href="account.html" class="btn btn-outline">Account</a>
+    </div>
+  </header>
+
+  <main class="product-page">
+    <div class="product-detail" id="productDetail">
+      <p class="product-loading">Loading…</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Gray Rock. All rights reserved. <a href="#" id="cookiePreferences">Cookie preferences</a> · <a href="admin.html">Admin Page</a></p>
+  </footer>
+
+  <div class="event-console" id="eventConsole" aria-hidden="true">
+    <div class="event-console-header">
+      <h3>Salesforce Events</h3>
+      <div class="event-console-actions">
+        <button type="button" class="event-console-toggle" id="consoleToggle" aria-label="Move console left or right"></button>
+        <button type="button" class="event-console-close" id="consoleClose" aria-label="Close console">&times;</button>
+      </div>
+    </div>
+    <div class="event-console-output" id="eventOutput"></div>
+    <button type="button" class="btn btn-console btn-console-clear" id="consoleClear">Clear</button>
+  </div>
+
+  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/salesforce-init.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get('id');
+      var el = document.getElementById('productDetail');
+
+      function formatPrice(n) {
+        return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function imgClass(p) {
+        return (p.image_class || p.id || '').replace(/[^a-z0-9-]/gi, '');
+      }
+
+      function renderProduct(product) {
+        el.innerHTML =
+          '<a href="shop.html" class="product-back">← Back to Shop</a>' +
+          '<div class="product-detail-grid">' +
+            '<div class="product-detail-image product-image-' + imgClass(product) + '"></div>' +
+            '<div class="product-detail-info">' +
+              '<h1 class="product-detail-name">' + (product.name || '') + '</h1>' +
+              '<p class="product-detail-price">' + formatPrice(parseFloat(product.price)) + '</p>' +
+              '<p class="product-detail-desc">' + (product.description || '') + '</p>' +
+              '<div class="product-detail-actions">' +
+                '<label for="productQty">Quantity:</label>' +
+                '<input type="number" id="productQty" min="1" value="1" class="product-qty-input">' +
+                '<button type="button" class="btn btn-primary btn-add-cart" id="addToCartBtn">Add to Cart</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>';
+
+        document.getElementById('addToCartBtn').addEventListener('click', function() {
+          var qty = parseInt(document.getElementById('productQty').value, 10) || 1;
+          window.orgGrayRockCart.addToCart(product.id, product.name, product.price, qty);
+          var panel = document.getElementById('cartPanel');
+          var overlay = document.getElementById('cartOverlay');
+          if (panel && overlay) {
+            panel.classList.add('cart-panel-open');
+            overlay.classList.add('cart-overlay-visible');
+            document.dispatchEvent(new CustomEvent('orgGrayRockCartUpdated'));
+          }
+        });
+      }
+
+      if (!id) {
+        el.innerHTML = '<p class="product-not-found">Product not found. <a href="shop.html">Back to Shop</a></p>';
+      } else {
+        fetch('/api/products/' + encodeURIComponent(id))
+          .then(function(r) {
+            if (r.status === 404) return null;
+            return r.json();
+          })
+          .then(function(product) {
+            if (product) {
+              renderProduct(product);
+            } else {
+              var products = window.orgGrayRockProducts || [];
+              var p = products.find(function(x) { return x.id === id; });
+              if (p) renderProduct(p);
+              else el.innerHTML = '<p class="product-not-found">Product not found. <a href="shop.html">Back to Shop</a></p>';
+            }
+          })
+          .catch(function() {
+            var products = window.orgGrayRockProducts || [];
+            var p = products.find(function(x) { return x.id === id; });
+            if (p) renderProduct(p);
+            else el.innerHTML = '<p class="product-not-found">Product not found. <a href="shop.html">Back to Shop</a></p>';
+          });
+      }
+
+      var pref = document.getElementById('cookiePreferences');
+      if (pref) pref.addEventListener('click', function(e) { e.preventDefault(); window.orgGrayRockShowConsentPopup && window.orgGrayRockShowConsentPopup(); });
+    })();
+  </script>
+</body>
+</html>

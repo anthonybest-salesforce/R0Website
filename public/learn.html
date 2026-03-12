@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn - Gray Rock</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header header-scrolled">
+    <div class="header-left">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="Gray Rock">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="learn.html" class="nav-active">Learn</a></li>
+          <li><a href="connect.html">Connect</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-ctas">
+      <button type="button" class="btn btn-console" id="consoleBtn" aria-label="Open event console">Console</button>
+      <a href="signin.html" class="btn btn-outline" id="authBtn">Sign In</a>
+      <a href="account.html" class="btn btn-outline">Account</a>
+    </div>
+  </header>
+
+  <main class="learn-page">
+    <section class="section">
+      <h1 class="learn-title">Learn</h1>
+      <p class="learn-desc">Explore industry insights, best practices, and curated content.</p>
+
+      <div class="learn-articles" id="learnArticles">
+        <p class="learn-loading">Loading content…</p>
+      </div>
+
+      <section class="learn-recommended">
+        <h2 class="learn-recommended-title">Recommended Content</h2>
+        <div class="learn-recommended-grid" id="learnRecommended">
+          <p class="learn-loading">Loading…</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Gray Rock. All rights reserved. <a href="#" id="cookiePreferences">Cookie preferences</a> · <a href="admin.html">Admin Page</a></p>
+  </footer>
+
+  <div class="event-console" id="eventConsole" aria-hidden="true">
+    <div class="event-console-header">
+      <h3>Salesforce Events</h3>
+      <div class="event-console-actions">
+        <button type="button" class="event-console-toggle" id="consoleToggle" aria-label="Move console left or right"></button>
+        <button type="button" class="event-console-close" id="consoleClose" aria-label="Close console">&times;</button>
+      </div>
+    </div>
+    <div class="event-console-output" id="eventOutput"></div>
+    <button type="button" class="btn btn-console btn-console-clear" id="consoleClear">Clear</button>
+  </div>
+
+  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
+  <script src="js/consent.js"></script>
+  <script src="js/console.js"></script>
+  <script src="js/salesforce-init.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script>
+    (function() {
+      var articlesEl = document.getElementById('learnArticles');
+      var recEl = document.getElementById('learnRecommended');
+
+      function imgClass(c) {
+        return (c.image_class || '').replace(/[^a-z0-9-]/gi, '') || 'rock';
+      }
+
+      function recImgClass(p, i) {
+        var cls = (p.image_class || p.id || '').replace(/[^a-z0-9-]/gi, '');
+        return 'learn-recommended-image ' + (cls ? 'product-image-' + cls : 'learn-rec-' + (i + 1));
+      }
+
+      fetch('/api/content')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var content = data.content || [];
+          if (content.length === 0) {
+            articlesEl.innerHTML = '<p class="learn-loading">No content available.</p>';
+          } else {
+            articlesEl.innerHTML = content.map(function(c) {
+              return '<article class="learn-article">' +
+                '<div class="learn-article-image learn-article-' + imgClass(c) + '"></div>' +
+                '<div class="learn-article-body">' +
+                  '<h2>' + (c.title || '') + '</h2>' +
+                  (c.meta ? '<p class="learn-article-meta">' + c.meta + '</p>' : '') +
+                  '<p>' + (c.body || '') + '</p>' +
+                '</div>' +
+              '</article>';
+            }).join('');
+          }
+        })
+        .catch(function() {
+            articlesEl.innerHTML = '<article class="learn-article"><div class="learn-article-image learn-article-rock"></div><div class="learn-article-body"><h2>Industry Fundamentals</h2><p class="learn-article-meta">Best Practices · 8 min read</p><p>Every business is built on core fundamentals. Understanding these principles helps you make better decisions and scale effectively.</p></div></article>';
+        });
+
+      fetch('/api/products-recommended')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var products = data.products || [];
+          if (products.length === 0) {
+            products = (window.orgGrayRockProducts || []).filter(function(p) {
+              return ['river-pebbles','meteorite-fragment','moon-rock-collection'].indexOf(p.id) >= 0;
+            });
+          }
+          if (products.length === 0) {
+            recEl.innerHTML = '<p class="learn-loading">No recommendations.</p>';
+          } else {
+            recEl.innerHTML = products.map(function(p, i) {
+              return '<a href="product.html?id=' + encodeURIComponent(p.id) + '" class="learn-recommended-card">' +
+                '<div class="learn-recommended-image ' + recImgClass(p, i) + '"></div>' +
+                '<div class="learn-recommended-body">' +
+                  '<h3>' + (p.name || '') + '</h3>' +
+                  '<p>' + ((p.description || '').substring(0, 50) + '…') + '</p>' +
+                '</div>' +
+              '</a>';
+            }).join('');
+          }
+        })
+        .catch(function() {
+          var products = (window.orgGrayRockProducts || []).filter(function(p) {
+            return ['river-pebbles','meteorite-fragment','moon-rock-collection'].indexOf(p.id) >= 0;
+          });
+          recEl.innerHTML = products.length ? products.map(function(p, i) {
+            var imgCls = (p.image_class || p.id || '').replace(/[^a-z0-9-]/gi, '');
+            return '<a href="product.html?id=' + encodeURIComponent(p.id) + '" class="learn-recommended-card">' +
+              '<div class="learn-recommended-image ' + (imgCls ? 'product-image-' + imgCls : 'learn-rec-' + (i + 1)) + '"></div>' +
+              '<div class="learn-recommended-body"><h3>' + (p.name || '') + '</h3><p>' + (p.description || '').substring(0, 50) + '…</p></div></a>';
+          }).join('') : '<p class="learn-loading">No recommendations.</p>';
+        });
+
+      var pref = document.getElementById('cookiePreferences');
+      if (pref) pref.addEventListener('click', function(e) { e.preventDefault(); window.orgGrayRockShowConsentPopup && window.orgGrayRockShowConsentPopup(); });
+    })();
+  </script>
+</body>
+</html>
