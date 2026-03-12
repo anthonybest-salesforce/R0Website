@@ -3,16 +3,48 @@
  * Integrates with Salesforce Personalization and Data 360.
  * Waits for user consent before initializing; sends consent to Data Cloud.
  * CDN script and consent.js must load before this file.
+ *
+ * The CDN script may register window.SalesforceInteractions asynchronously,
+ * so we poll for it instead of failing immediately.
  */
 (function() {
-  if (typeof window.SalesforceInteractions === 'undefined') {
-    console.warn('[Gray Rock] Salesforce SDK not loaded');
-    return;
+  var POLL_INTERVAL_MS = 50;
+  var POLL_TIMEOUT_MS = 5000;
+
+  function waitForSalesforceSDK(callback) {
+    if (typeof window.SalesforceInteractions !== 'undefined') {
+      callback(window.SalesforceInteractions);
+      return;
+    }
+    var elapsed = 0;
+    var poll = function() {
+      if (typeof window.SalesforceInteractions !== 'undefined') {
+        callback(window.SalesforceInteractions);
+        return;
+      }
+      elapsed += POLL_INTERVAL_MS;
+      if (elapsed >= POLL_TIMEOUT_MS) {
+        console.warn('[Gray Rock] Salesforce SDK not loaded after ' + (POLL_TIMEOUT_MS / 1000) + 's');
+        return;
+      }
+      setTimeout(poll, POLL_INTERVAL_MS);
+    };
+    setTimeout(poll, POLL_INTERVAL_MS);
   }
 
-  var SI = window.SalesforceInteractions;
   var CONSENT_ACCEPTED = 'accepted';
   var initialized = false;
+  var pendingConsentStatus = null;
+  var runInitWithConsent = null;
+
+  document.addEventListener('orgGrayRockConsentReady', function(e) {
+    var status = (e.detail && e.detail.status) ? e.detail.status : CONSENT_ACCEPTED;
+    pendingConsentStatus = status;
+    if (runInitWithConsent) runInitWithConsent(status);
+  });
+
+  waitForSalesforceSDK(function(SI) {
+    if (!SI) return;
 
   function logAction(action, detail) {
     var msg = '[Gray Rock] Salesforce Personalization: ' + action;
@@ -161,11 +193,8 @@
     });
   }
 
-  function onConsentReady(e) {
-    var status = e.detail && e.detail.status ? e.detail.status : CONSENT_ACCEPTED;
-    logAction('consent received', 'status=' + status);
-    initWithConsent(status);
-  }
-
-  document.addEventListener('orgGrayRockConsentReady', onConsentReady);
+  runInitWithConsent = initWithConsent;
+  var status = pendingConsentStatus || (typeof window.orgGrayRockConsentStatus !== 'undefined' ? window.orgGrayRockConsentStatus : null);
+  if (status) initWithConsent(status);
+  });
 })();

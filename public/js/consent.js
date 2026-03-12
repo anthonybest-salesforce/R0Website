@@ -109,6 +109,7 @@
   document.addEventListener('click', resetAndRefresh);
 
   function dispatchConsentReady(status) {
+    window.orgGrayRockConsentStatus = status;
     document.dispatchEvent(new CustomEvent('orgGrayRockConsentReady', {
       detail: { status: status }
     }));
