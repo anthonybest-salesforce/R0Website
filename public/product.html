@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
+  <script id="salesforce-sdk" src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
   <title>Product - Gray Rock</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" href="images/logo.png">
@@ -53,14 +53,9 @@
     <button type="button" class="btn btn-console btn-console-clear" id="consoleClear">Clear</button>
   </div>
 
-  <script src="js/consent.js"></script>
-  <script src="js/console.js"></script>
-  <script src="salesforce-sitemap.js"></script>
-  <script src="js/salesforce-init.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/products.js"></script>
-  <script src="js/cart.js"></script>
   <script>
+    window.orgGrayRockScriptsToLoad = ['js/consent.js', 'js/console.js', 'salesforce-sitemap.js', 'js/salesforce-init.js', 'js/auth.js', 'js/products.js', 'js/cart.js'];
+    window.orgGrayRockOnScriptsLoaded = function() {
     (function() {
       var params = new URLSearchParams(window.location.search);
       var id = params.get('id');
@@ -133,6 +128,8 @@
       var pref = document.getElementById('cookiePreferences');
       if (pref) pref.addEventListener('click', function(e) { e.preventDefault(); window.orgGrayRockShowConsentPopup && window.orgGrayRockShowConsentPopup(); });
     })();
+    };
   </script>
+  <script src="js/load-scripts.js"></script>
 </body>
 </html>
