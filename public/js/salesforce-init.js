@@ -115,9 +115,7 @@
       if (!rawConfig) {
         console.warn('[Gray Rock] salesforce-sitemap.js must load before salesforce-init.js');
       }
-      var sitemapConfig = rawConfig && typeof window.orgGrayRockToRuntimeSitemap === 'function'
-        ? window.orgGrayRockToRuntimeSitemap(rawConfig)
-        : { pageTypeDefault: { name: 'default', interaction: { name: 'default', eventType: 'userEngagement' } }, pageTypes: [] };
+      var sitemapConfig = rawConfig || { pageTypeDefault: { name: 'default', interaction: { name: 'default', eventType: 'userEngagement' } }, pageTypes: [] };
       sitemapConfig.global = {
         onActionEvent: function(actionEvent) {
           var name = (actionEvent && actionEvent.interaction && actionEvent.interaction.name) || 'userEngagement';

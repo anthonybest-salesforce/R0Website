@@ -150,30 +150,15 @@
     }
 
     function sendSignInToDataCloud(email) {
-      var payload = {
-        interaction: { name: 'signIn', eventType: 'signIn' },
-        user: {
-          identities: { email: email },
-          attributes: { emailAddress: email }
-        }
-      };
-      dispatchToConsole('sendEvent', 'signIn', payload);
-      var SI = window.SalesforceInteractions;
-      if (SI && typeof SI.sendEvent === 'function') {
-        try {
-          SI.setIdentity({ identifiers: [{ type: 'email', value: email }] });
-          SI.sendEvent(payload);
-        } catch (err) { console.warn('[Gray Rock] signIn sendEvent failed:', err); }
+      dispatchToConsole('sendEvent', 'signIn', { interaction: { name: 'signIn', eventType: 'signIn' }, user: { identities: { email: email }, attributes: { emailAddress: email } } });
+      if (window.orgGrayRockSalesforce && typeof window.orgGrayRockSalesforce.sendSignIn === 'function') {
+        window.orgGrayRockSalesforce.sendSignIn(email);
       }
     }
 
     function sendCreateAccountToDataCloud(payload) {
       var eventPayload = {
-        interaction: {
-          name: 'createAccount',
-          eventType: 'createAccount',
-          leadSource: 'Gray Rock Website'
-        },
+        interaction: { name: 'createAccount', eventType: 'createAccount', leadSource: 'Gray Rock Website' },
         user: {
           identities: { email: payload.email },
           attributes: {
@@ -187,12 +172,8 @@
         }
       };
       dispatchToConsole('sendEvent', 'createAccount', eventPayload);
-      var SI = window.SalesforceInteractions;
-      if (SI && typeof SI.sendEvent === 'function') {
-        try {
-          SI.setIdentity({ identifiers: [{ type: 'email', value: payload.email }] });
-          SI.sendEvent(eventPayload);
-        } catch (err) { console.warn('[Gray Rock] createAccount sendEvent failed:', err); }
+      if (window.orgGrayRockSalesforce && typeof window.orgGrayRockSalesforce.sendCreateAccount === 'function') {
+        window.orgGrayRockSalesforce.sendCreateAccount(payload);
       }
     }
 

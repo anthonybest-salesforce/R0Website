@@ -137,35 +137,8 @@
       }
     } catch (e) {}
 
-    var SI = window.SalesforceInteractions;
-    if (SI && typeof SI.sendEvent === 'function') {
-      try {
-        var names = (typeof window.orgGrayRockInteractionNames !== 'undefined' && window.orgGrayRockInteractionNames.order)
-          ? window.orgGrayRockInteractionNames.order
-          : null;
-        var purchaseName = (names && names.Purchase) || (SI.OrderInteractionName ? SI.OrderInteractionName.Purchase : 'Purchase');
-        SI.sendEvent({
-          interaction: {
-            name: purchaseName,
-            order: {
-              id: orderId || 'RZ-' + Date.now(),
-              totalValue: total,
-              currency: 'USD',
-              lineItems: cart.map(function(i) {
-                return {
-                  catalogObjectType: 'Product',
-                  catalogObjectId: i.id,
-                  quantity: i.qty || 1,
-                  price: parseFloat(i.price) || 0,
-                  currency: 'USD'
-                };
-              })
-            }
-          }
-        });
-      } catch (err) {
-        console.warn('[Gray Rock] sendEvent Purchase failed:', err);
-      }
+    if (window.orgGrayRockSalesforce && typeof window.orgGrayRockSalesforce.sendPurchase === 'function') {
+      window.orgGrayRockSalesforce.sendPurchase(orderId, total, cart);
     }
 
     if (window.orgGrayRockCart) {

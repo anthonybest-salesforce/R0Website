@@ -23,59 +23,6 @@
     }
   }
 
-  function sendAddToCartEvent(productId, productName, price, qty) {
-    var SI = window.SalesforceInteractions;
-    if (!SI || typeof SI.sendEvent !== 'function') return;
-    try {
-      var names = (typeof window.orgGrayRockInteractionNames !== 'undefined' && window.orgGrayRockInteractionNames.cart)
-        ? window.orgGrayRockInteractionNames.cart
-        : null;
-      var name = (names && names.AddToCart) || (SI.CartInteractionName ? SI.CartInteractionName.AddToCart : 'Add To Cart');
-      SI.sendEvent({
-        interaction: {
-          name: name,
-          lineItem: {
-            catalogObjectType: 'Product',
-            catalogObjectId: productId,
-            quantity: qty,
-            price: parseFloat(price) || 0,
-            currency: 'USD'
-          }
-        }
-      });
-    } catch (e) {
-      console.warn('[Gray Rock] sendEvent AddToCart failed:', e);
-    }
-  }
-
-  function sendReplaceCartEvent(items) {
-    var SI = window.SalesforceInteractions;
-    if (!SI || typeof SI.sendEvent !== 'function') return;
-    try {
-      var names = (typeof window.orgGrayRockInteractionNames !== 'undefined' && window.orgGrayRockInteractionNames.cart)
-        ? window.orgGrayRockInteractionNames.cart
-        : null;
-      var name = (names && names.ReplaceCart) || (SI.CartInteractionName ? SI.CartInteractionName.ReplaceCart : 'Replace Cart');
-      var lineItems = (items || []).map(function(i) {
-        return {
-          catalogObjectType: 'Product',
-          catalogObjectId: i.id,
-          quantity: i.qty || 1,
-          price: parseFloat(i.price) || 0,
-          currency: 'USD'
-        };
-      });
-      SI.sendEvent({
-        interaction: {
-          name: name,
-          lineItems: lineItems
-        }
-      });
-    } catch (e) {
-      console.warn('[Gray Rock] sendEvent ReplaceCart failed:', e);
-    }
-  }
-
   function addToCart(productId, productName, price, qty) {
     qty = Math.max(1, parseInt(qty, 10) || 1);
     var cart = getCart();
@@ -86,7 +33,9 @@
       cart.push({ id: productId, name: productName, price: price, qty: qty });
     }
     saveCart(cart);
-    sendAddToCartEvent(productId, productName, price, qty);
+    if (window.orgGrayRockSalesforce && typeof window.orgGrayRockSalesforce.sendAddToCart === 'function') {
+      window.orgGrayRockSalesforce.sendAddToCart(productId, productName, price, qty);
+    }
   }
 
   function removeFromCart(productId) {
@@ -216,7 +165,9 @@
         if (overlay) overlay.classList.add('cart-overlay-visible');
         renderCartPanel();
         var cart = getCart();
-        if (cart.length > 0) sendReplaceCartEvent(cart);
+        if (cart.length > 0 && window.orgGrayRockSalesforce && typeof window.orgGrayRockSalesforce.sendReplaceCart === 'function') {
+          window.orgGrayRockSalesforce.sendReplaceCart(cart);
+        }
       });
     }
 

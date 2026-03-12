@@ -17,30 +17,12 @@
       localStorage.setItem('loggedIn', 'true');
       if (emailEl) emailEl.textContent = me.email || '';
 
-      if (me.email && window.SalesforceInteractions) {
-        var SI = window.SalesforceInteractions;
-        try {
-          SI.setIdentity({ identifiers: [{ type: 'email', value: me.email }] });
-          document.dispatchEvent(new CustomEvent('orgGrayRockSalesforceEvent', {
-            detail: { type: 'identity', detail: { email: me.email } }
-          }));
-          if (typeof SI.sendEvent === 'function') {
-            var attrs = { emailAddress: me.email };
-            if (me.firstName) attrs.firstName = me.firstName;
-            if (me.lastName) attrs.lastName = me.lastName;
-            if (me.phone) attrs.phone = me.phone;
-            if (me.optInEmail !== undefined) attrs.optInEmail = me.optInEmail;
-            if (me.optInSms !== undefined) attrs.optInSms = me.optInSms;
-            SI.sendEvent({
-              interaction: { name: 'accountView', eventType: 'userEngagement' },
-              user: {
-                identities: { email: me.email },
-                attributes: attrs
-              }
-            });
-          }
-        } catch (e) {
-          console.warn('[Gray Rock] setIdentity/sendEvent failed:', e);
+      if (me.email) {
+        document.dispatchEvent(new CustomEvent('orgGrayRockSalesforceEvent', {
+          detail: { type: 'identity', detail: { email: me.email } }
+        }));
+        if (window.orgGrayRockSalesforce && typeof window.orgGrayRockSalesforce.sendAccountView === 'function') {
+          window.orgGrayRockSalesforce.sendAccountView(me);
         }
       }
 

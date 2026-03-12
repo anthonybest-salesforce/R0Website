@@ -1,12 +1,8 @@
 /**
  * Gray Rock - Connect page web-to-lead form
- * Submits lead data to Salesforce Data Cloud SDX as a custom event.
+ * Submits lead data to Salesforce Data Cloud SDX via orgGrayRockSalesforce.sendWebToLead.
  */
 (function() {
-  var CUSTOM_EVENT_TYPE = (typeof window.orgGrayRockInteractionNames !== 'undefined' && window.orgGrayRockInteractionNames.lead)
-    ? window.orgGrayRockInteractionNames.lead
-    : 'webToLead';
-
   function init() {
     var form = document.getElementById('connectForm');
     if (!form) return;
@@ -27,35 +23,10 @@
       message: (form.querySelector('#message') || {}).value || ''
     };
 
-    if (!data.email) {
-      return;
-    }
+    if (!data.email) return;
 
-    var SI = window.SalesforceInteractions;
-    if (SI && typeof SI.sendEvent === 'function') {
-      try {
-        SI.sendEvent({
-          interaction: {
-            name: CUSTOM_EVENT_TYPE,
-            eventType: CUSTOM_EVENT_TYPE,
-            company: data.company || undefined,
-            phone: data.phone || undefined,
-            message: data.message || undefined,
-            leadSource: 'Gray Rock Website'
-          },
-          user: {
-            identities: { email: data.email },
-            attributes: {
-              firstName: data.firstName,
-              lastName: data.lastName,
-              emailAddress: data.email
-            }
-          }
-        });
-        console.log('%c[Gray Rock] Salesforce Personalization: sendEvent — webToLead → Data Cloud SDX', 'color: orange; font-weight: 500');
-      } catch (err) {
-        console.warn('[Gray Rock] sendEvent failed:', err);
-      }
+    if (window.orgGrayRockSalesforce && typeof window.orgGrayRockSalesforce.sendWebToLead === 'function') {
+      window.orgGrayRockSalesforce.sendWebToLead(data);
     }
 
     showSuccess(form);
