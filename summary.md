@@ -196,15 +196,10 @@ Schema and seed data are in `db/connection.js` (`initSchema`, `DEFAULT_PRODUCTS`
 - CDN script loads SDK; consent popup gates initialization
 - Events sent to Data Cloud; identity set on login/account load
 
-### Script Load Order (every page)
-```html
-<script src="https://cdn.c360a.salesforce.com/beacon/c360a/75a89832-fee6-4979-b0e4-738ab6ed2fa3/scripts/c360a.min.js"></script>
-<script src="js/consent.js"></script>
-<script src="js/console.js"></script>
-<script src="js/salesforce-init.js"></script>
-<script src="js/auth.js"></script>
-<script src="js/cart.js"></script>
-```
+### Script Load Order (every page except admin)
+- **CDN script** loads in `<head>` (one of the first things to load)
+- Body scripts: consent.js → console.js → salesforce-sitemap.js → salesforce-init.js → auth.js → cart.js (and page-specific scripts)
+- **Admin page** (`admin.html`) does NOT load the CDN or any Salesforce scripts
 
 ### Tenant Configuration (embedded in CDN)
 | Setting | Value |
@@ -380,7 +375,7 @@ git push heroku main
 
 ### 6. Website Scripts
 - [ ] Replace CDN script URL in HTML if using new connector (or keep existing)
-- [ ] Ensure script order: CDN → consent.js → console.js → salesforce-init.js → auth.js → cart.js
+- [ ] Ensure script order: CDN in `<head>` first; then consent.js → console.js → salesforce-sitemap.js → salesforce-init.js → auth.js → cart.js (admin.html excludes all Salesforce scripts)
 - [ ] Verify consent popup and Cookie preferences work
 
 ### 7. Deploy
